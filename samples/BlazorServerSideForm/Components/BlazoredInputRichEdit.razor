@@ -78,9 +78,12 @@
     }
 
     [JSInvokable]
-    public Task OnBlur(string html)
+    public async Task OnBlur(string html)
     {
-        CurrentValue = html;
-        return Task.CompletedTask;
+        await InvokeAsync(() =>
+        {
+            CurrentValue = html;
+            StateHasChanged();
+        });
     }
 }

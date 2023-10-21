@@ -6,7 +6,7 @@
         @ToolbarContent
     </div>
 }
-<div class="@EditorCssClass" id="QuillEditor" @ref="@QuillElement" style="@EditorCssStyle">
+<div class="@EditorCssClass" id="@QuillId" @ref="@QuillElement" style="@EditorCssStyle">
     @EditorContent
 </div>
 @if (BottomToolbar)
@@ -79,6 +79,7 @@
 
     private ElementReference QuillElement;
     private ElementReference ToolBar;
+    private string QuillId = $"q{Guid.NewGuid().ToString("N")}";
 
     protected override async Task
         OnAfterRenderAsync(bool firstRender)

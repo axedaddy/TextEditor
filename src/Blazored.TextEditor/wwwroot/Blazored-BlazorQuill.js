@@ -31,7 +31,8 @@
                     if (Object.keys(this.dotNetObjReferences).length === 0 || !this.dotNetObjReferences.hasOwnProperty(quillElement.id)) {
                         return;
                     }
-                    if (event.relatedTarget === null || !document.getElementById("QuillToolBar").contains(event.relatedTarget)) {
+                    if (event.relatedTarget === null || event.relatedTarget.type === "submit" || document.getElementById(quillElement.id).parentElement.contains(event.relatedTarget)===false ) {
+                        console.log('calling c# ->' + quillElement.id)
                         this.dotNetObjReferences[quillElement.id].invokeMethodAsync('OnBlur', quillElement.__quill.root.innerHTML);
                     }
                 }
